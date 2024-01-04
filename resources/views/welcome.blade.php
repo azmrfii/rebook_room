@@ -293,9 +293,18 @@
                     <p>
                     Call: 0251-7544005
                     <br>
-                    <span>0856-8336-115 (Iklan)</span>
+                    <span>
+                        <a href="https://api.whatsapp.com/send?phone=628568336115&text=Hello, more information!">
+                            0856-8336-115 (Iklan)
+                        </a>
+                        </span>
                     <br>
-                    <span>0815-5847-0103 (Langganan Koran/ ePaper)</span>
+                    <span>
+                        <a href="https://api.whatsapp.com/send?phone=6281558470103&text=Hello, more information!">
+                            0815-5847-0103 (Langganan Koran/ ePaper)
+                        </a>
+
+                    </span>
                     </p>
                 </div>
                 </div>

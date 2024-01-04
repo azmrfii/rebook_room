@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\TbRebook;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class RebookController extends Controller
 {
@@ -11,7 +13,13 @@ class RebookController extends Controller
      */
     public function index()
     {
-        //
+        $data = DB::table('tb_rebook as a')
+        ->select('a.id','b.nm_room as nama_ruangan', 'nama_rebook', 'no_hp_rebook', 'waktu_mulai', 'waktu_berakhir')
+        ->leftJoin('tb_room as b', 'b.id', '=', 'a.id_room')
+        ->orderByDesc('waktu_mulai')
+        ->get();
+
+        return view('booking.index', compact('data'));
     }
 
     /**
@@ -59,6 +67,8 @@ class RebookController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $data = TbRebook::find($id);
+        $data->delete();
+        return back()->with('message', 'Berhasil cancel ruangan booking.');
     }
 }

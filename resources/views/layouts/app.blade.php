@@ -41,7 +41,7 @@
                 <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
                     <li><a href="{{ route('dashboard') }}" class="nav-link px-2 link-secondary">Dashboard</a></li>
                     <li><a href="{{ route('listRuangan.index') }}" class="nav-link px-2">Ruangan</a></li>
-                    <li><a href="#" class="nav-link px-2">Booking</a></li>
+                    <li><a href="{{ route('RebookRuangan.index') }}" class="nav-link px-2">Booking</a></li>
                     <li><a href="{{ route('listPenggunaAdministrasi.index') }}" class="nav-link px-2">Pengguna(Admin)</a></li>
                 </ul>
 
