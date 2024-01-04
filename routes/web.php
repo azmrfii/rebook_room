@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\RebookController;
+use App\Http\Controllers\RoomController;
+use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +19,18 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::resource('listRuangan', RoomController::class);
+Route::resource('listPenggunaAdministrasi', UsersController::class);
+Route::resource('RebookRuangan', RebookController::class);
+
+// Hak akses dapat digunakan jika sudah login
+// Route::group(['middleware' => 'auth'], function() {
+
+// });
+
+// Route::prefix('admin')->group(function () {
+//     Route::get('/users', function () {
+//         // Matches The "/admin/users" URL
+//     });
+// });
