@@ -14,10 +14,8 @@ class TbRebook extends Model
 
     protected $fillable = [
         'id_room',
-        'nama_room',
         'nama_rebook',
         'no_hp_rebook',
-        'tgl_rebook',
         'waktu_mulai',
         'waktu_berakhir',
     ];

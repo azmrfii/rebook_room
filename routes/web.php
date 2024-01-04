@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RebookController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\UsersController;
@@ -16,9 +18,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::post('booking', [HomeController::class, 'booking'])->name('booking');
+
+Route::get('/login', [LoginController::class, 'index'])->name('login');
+Route::post('cekLogin', [LoginController::class, 'authenticate'])->name('cekLogin');
+Route::post('logout', [LoginController::class, 'logout'])->name('logout');
+
+
+Route::get('dashboard', [HomeController::class, 'dashboard'])->name('dashboard');
 
 Route::resource('listRuangan', RoomController::class);
 Route::resource('listPenggunaAdministrasi', UsersController::class);

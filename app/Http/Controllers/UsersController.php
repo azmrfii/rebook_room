@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\TbUsers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UsersController extends Controller
 {
@@ -11,7 +13,8 @@ class UsersController extends Controller
      */
     public function index()
     {
-        //
+        $data = TbUsers::all();
+        return view('pengguna_admin.index', compact('data'));
     }
 
     /**
@@ -27,7 +30,19 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'username' => 'required|unique:tb_users,username',
+            'password' => 'required',
+        ]);
+
+        $data = new TbUsers();
+
+        $data->nama_lengkap = $request->input('nama_lengkap');
+        $data->username = $request->input('username');
+        $data->password = Hash::make($request->input('password'));
+        $data->save();
+
+        return back()->with('message', 'Pengguna Admin berhasil ditambahkan.');
     }
 
     /**
@@ -43,7 +58,8 @@ class UsersController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $data = TbUsers::find($id);
+        return view('pengguna.edit', compact('data'));
     }
 
     /**
@@ -51,7 +67,19 @@ class UsersController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'username' => 'required',
+            'password' => 'required',
+        ]);
+
+        $data = new TbUsers();
+
+        $data->nama_lengkap = $request->input('nama_lengkap');
+        $data->username = $request->input('username');
+        $data->password = Hash::make($request->input('password'));
+        $data->save();
+
+        return back()->with('message', 'Pengguna Admin berhasil diubah.');
     }
 
     /**
